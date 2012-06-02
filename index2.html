@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<style type="text/css">
+		/*Inicializar CSS*/
+		body, section, h1, textarea, div{
+			margin:0;
+			padding:0;
+			border:0;
+			outline:none;
+		}
+		html,header,footer{
+			height:100%;
+			text-shadow:0px 1px 0px #ddd;
+		}
+
+		/**/
+		body{
+			background-color: #eee;
+			background-image: 
+			-webkit-linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), 
+			-webkit-linear-gradient(-45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+			background-image: 
+			-moz-linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), 
+			-moz-linear-gradient(-45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+			background-image: 
+			-o-linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), 
+			-o-linear-gradient(-45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+			background-image: 
+			-ms-linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), 
+			-ms-linear-gradient(-45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+			background-size:60px 60px;
+			font-family: sans-serif;
+		}
+		header h1{
+			display: table;
+			margin: auto;
+			background: rgba(155,155,155,.7);
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			-webkit-box-shadow: 2px 2px 5px #444;
+			-moz-box-shadow: 2px 2px 5px #444;
+			box-shadow: 2px 2px 5px #444;
+
+		}
+		.creditosContenedor, .promedioContenedor{
+			left: 10%;
+			position: relative;
+			display: inline-block;
+			background: rgba(155,155,155,.7);
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			-webkit-box-shadow: 2px 2px 5px #444;
+			-moz-box-shadow: 2px 2px 5px #444;
+			box-shadow: 2px 2px 5px #444;
+		}
+		.semestre{
+			margin: 10px auto;
+			display: block;
+			border: 1px solid #e1e1e1;
+			background: rgba(200,200,200,.9);
+			min-width: 150px;
+			width: 80%;
+			-webkit-box-shadow: 2px 2px 5px #444;
+			-moz-box-shadow: 2px 2px 5px #444;
+			box-shadow: 2px 2px 5px #444;
+			border-radius: 20px;
+			-moz-border-radius: 20px;
+			-webkit-border-radius: 20px;
+		}
+		.materia{
+			font-size:1.1em;
+			display: inline-block;
+			position:relative;
+			min-width: 130px;
+			max-width: 170px;
+			margin: 10px 10px;
+			background:rgba(255,255,255,.5);
+			border: 1px solid black;
+			-webkit-border-radius:20px;
+			-moz-border-radius:20px;
+			border-radius:20px;
+			-webkit-box-shadow: 2px 2px 5px #444;
+			-moz-box-shadow: 2px 2px 5px #444;
+			box-shadow: 2px 2px 5px #444;
+		}
+
+		.materia:hover{
+			background:rgba(150,150,150,.5);
+		}
+
+		.pasada{
+			background:rgba(70,170,170,.7);
+			border: 1px solid black;
+		}
+		.pasada:hover{
+			background:rgba(0,100,100,.7);
+		}
+
+		.noPosible{
+			background-color:rgba(200,0,0,1);
+		}
+		.noPosible:hover,.optativa.noPosible:hover{
+			background-color:rgba(150,0,0,1);
+		}
+
+		.optativa.noPosible{
+			background-color:rgba(170,0,40,1);
+		}
+
+
+		.necesario{
+			background-color:rgba(0,200,0,1) !important;
+		}
+
+		textarea{
+			overflow: hidden;
+			position:relative;
+			display: block;
+			margin: 5px auto;
+			-webkit-border-radius:2px;
+			-moz-border-radius:2px;
+			border-radius:4px;
+			width:.6em;
+			height:1em;
+			font-size:1.5em;
+			resize:none;
+		}
+		textarea:hover {
+			-webkit-box-shadow: 0px 0px 3px #888, inset 0px 0px 5px #333;
+			-moz-box-shadow: 0px 0px 3px #888, inset 0px 0px 5px #333;
+			box-shadow: 0px 0px 3px #888, inset 0px 0px 5px #333;
+		}
+		textarea:focus {
+			-webkit-box-shadow: 0px 0px 5px #00f;
+			-moz-box-shadow: 0px 0px 5px #00f;
+			box-shadow: 0px 0px 5px #00f;
+		}
+		.clave,.nombre,.creditos,.pre{
+			position:relative;
+			display:table;
+			margin: 5px auto;
+		}
+
+		.boton{
+			background: rgba(230,230,230,.95);
+			display: block;
+			width: 80%;
+			height: 100px;
+			margin:20px auto;
+			font-size:1.5em;
+			border-radius: 20px;
+			-moz-border-radius: 20px;
+			-webkit-border-radius: 20px;
+		}
+	</style>
+	<title>CUCEI Ing. en Computación</title>
+</head>
+<body>
+	<header>
+		<h1>Plan de estudios</h1> 
+		<div class="creditosContenedor">Créditos: 
+			<div id="creditos"></div>
+		</div>
+		<div class="promedioContenedor">Promedio: 
+			<div id="promedio"></div>
+		</div>
+	</header>
+	<nav>
+		
+	</nav>
+	<section>
+	<!-- div#smestre$.semestre*8>(div.materia>div.clave+div.nombre+div.creditos+div.pre#+textarea.cursada[placeholder="semestre en el cual fue cursada" cols=2 rows=1])*7<div></div> -->
+	<div id="smestre1" class="semestre">
+		1°<br>
+		<div class="materia" id="FS101">
+			<div class="clave">FS101</div>
+			<div class="nombre">Int. a la Física</div>
+			<div class="creditos">11</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="MT101">
+			<div class="clave">MT101</div>
+			<div class="nombre">Precálculo</div>
+			<div class="creditos">9</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="MT106">
+			<div class="clave">MT106</div>
+			<div class="nombre">Lógica y Conjuntos</div>
+			<div class="creditos">9</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="ID102">
+			<div class="clave">ID102</div>
+			<div class="nombre">Taller de Comunicación Oral y Escrita</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC100">
+			<div class="clave">CC100</div>
+			<div class="nombre">Introducción a la Computación</div>
+			<div class="creditos">8</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC101">
+			<div class="clave">CC101</div>
+			<div class="nombre">Taller de Introducción a la Computación</div>
+			<div class="creditos">3</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+	</div>
+	<div id="smestre2" class="semestre">
+		2°<br>
+		<div class="materia" id="FS102">
+			<div class="clave">FS102</div>
+			<div class="nombre">Mecánica</div>
+			<div class="creditos">12</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="MT110">
+			<div class="clave">MT110</div>
+			<div class="nombre">Cálculo Diferencial e Integral</div>
+			<div class="creditos">9</div>
+			<div class="pre">MT101</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="MT120">
+			<div class="clave">MT120</div>
+			<div class="nombre">Algebra Lineal I</div>
+			<div class="creditos">9</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="MT260">
+			<div class="clave">MT260</div>
+			<div class="nombre">Matemáticas Discretas</div>
+			<div class="creditos">8</div>
+			<div class="pre">MT101,MT106</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="ID103">
+			<div class="clave">ID103</div>
+			<div class="nombre">Taler de Redacción</div>
+			<div class="creditos">4</div>
+			<div class="pre">ID102</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC102">
+			<div class="clave">CC102</div>
+			<div class="nombre">Introducción a la Programación</div>
+			<div class="creditos">8</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC103">
+			<div class="clave">CC103</div>
+			<div class="nombre">Taller de Programación Estructurada</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+	</div>
+	<div id="smestre3" class="semestre">
+		3°<br>
+		<div class="materia" id="FS105">
+			<div class="clave">FS105</div>
+			<div class="nombre">Electromagnetismo</div>
+			<div class="creditos">9</div>
+			<div class="pre">FS102,MT110</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="MT140">
+			<div class="clave">MT140</div>
+			<div class="nombre">Ecuaciones Diferenciales Ordinarias I</div>
+			<div class="creditos">8</div>
+			<div class="pre">MT110</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="MT130">
+			<div class="clave">MT130</div>
+			<div class="nombre">Análisis Numérico I</div>
+			<div class="creditos">9</div>
+			<div class="pre">MT110,MT120</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="MT150">
+			<div class="clave">MT150</div>
+			<div class="nombre">Elementos de Probabilidad y Estadística</div>
+			<div class="creditos">8</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC202">
+			<div class="clave">CC202</div>
+			<div class="nombre">Estructura de Datos</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC102</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC203">
+			<div class="clave">CC203</div>
+			<div class="nombre">Taller de Estructura de Datos</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC200">
+			<div class="clave">CC200</div>
+			<div class="nombre">Programación Orientada a Objetos</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC102</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC201">
+			<div class="clave">CC201</div>
+			<div class="nombre">Taller de Programación Orientada a Objetos</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+	</div>
+	<div id="smestre4" class="semestre">
+		4°<br>
+		<div class="materia" id="ID204">
+			<div class="clave">ID204</div>
+			<div class="nombre">Administración</div>
+			<div class="creditos">6</div>
+			<div class="pre">90</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="ET209">
+			<div class="clave">ET209</div>
+			<div class="nombre">Sistemas Digitales I</div>
+			<div class="creditos">11</div>
+			<div class="pre">MT106||150</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC211">
+			<div class="clave">CC211</div>
+			<div class="nombre">Teleinformática</div>
+			<div class="creditos">11</div>
+			<div class="pre">100</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC209">
+			<div class="clave">CC209</div>
+			<div class="nombre">Teoría de la Computación</div>
+			<div class="creditos">11</div>
+			<div class="pre">MT260</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC204">
+			<div class="clave">CC204</div>
+			<div class="nombre">Estructura de Archivos</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC202</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC205">
+			<div class="clave">CC205</div>
+			<div class="nombre">Taller de Estructura de Archivos</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC208">
+			<div class="clave">CC208</div>
+			<div class="nombre">Lenguajes de Programación Comparados</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC200</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+	</div>
+	<div id="smestre5" class="semestre">
+		5°<br>
+		<div class="materia" id="CC210">
+			<div class="clave">CC210</div>
+			<div class="nombre">Arquitectura de Computadoras</div>
+			<div class="creditos">11</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC212">
+			<div class="clave">CC212</div>
+			<div class="nombre">Redes de Computadoras</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC211</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC213">
+			<div class="clave">CC213</div>
+			<div class="nombre">Taller de Redes de Computadoras</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC311">
+			<div class="clave">CC311</div>
+			<div class="nombre">Gráficas por Computadora</div>
+			<div class="creditos">11</div>
+			<div class="pre">MT130</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC312">
+			<div class="clave">CC312</div>
+			<div class="nombre">Taller de Gráficas por Computadora</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC206">
+			<div class="clave">CC206</div>
+			<div class="nombre">Programación de Sistemas</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC204</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC207">
+			<div class="clave">CC207</div>
+			<div class="nombre">Taller de Programación de Sistemas</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC302">
+			<div class="clave">CC302</div>
+			<div class="nombre">Bases de Datos</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC204</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC303">
+			<div class="clave">CC303</div>
+			<div class="nombre">Taller de Bases de Datos</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC204</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC307">
+			<div class="clave">CC307</div>
+			<div class="nombre">Programación Lógica y Funcional</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC208</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC308">
+			<div class="clave">CC308</div>
+			<div class="nombre">Taller de Programación Lógica y Funcional</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="ID203">
+			<div class="clave">ID203</div>
+			<div class="nombre">Análisis Contable</div>
+			<div class="creditos">6</div>
+			<div class="pre">80</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia optativa" id="CC401">
+			<div class="clave">CC401</div>
+			<div class="nombre">Programación de Sistemas Multimedia</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC200</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia optativa" id="CC411">
+			<div class="clave">CC411</div>
+			<div class="nombre">Computación Tolerante a Fallas</div>
+			<div class="creditos">11</div>
+			<div class="pre">250</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC300">
+			<div class="clave">CC300</div>
+			<div class="nombre">Sistemas Operativos</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC208</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC301">
+			<div class="clave">CC301</div>
+			<div class="nombre">Taller de Sistemas Operativos</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC413">
+			<div class="clave">CC413</div>
+			<div class="nombre">Programación Concurrente y Distribuida</div>
+			<div class="creditos">11</div>
+			<div class="pre">250</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC414">
+			<div class="clave">CC414</div>
+			<div class="nombre">Taller de Programación Concurrente y Distribuida</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+	</div>
+	<div id="smestre6" class="semestre">
+		6°<br>
+		<div class="materia optativa" id="CC409">
+			<div class="clave">CC409</div>
+			<div class="nombre">Arquitectura de Computadoras Avanzada</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC210</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC407">
+			<div class="clave">CC407</div>
+			<div class="nombre">Proyecto Terminal</div>
+			<div class="creditos">4</div>
+			<div class="pre">350</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC316">
+			<div class="clave">CC316</div>
+			<div class="nombre">Análisis y Diseño de Algoritmos</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC209</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC317">
+			<div class="clave">CC317</div>
+			<div class="nombre">Compiladores</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC209</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC318">
+			<div class="clave">CC318</div>
+			<div class="nombre">Taller de Compiladores</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC304">
+			<div class="clave">CC304</div>
+			<div class="nombre">Ingeniería de Software I</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC302</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC319">
+			<div class="clave">CC319</div>
+			<div class="nombre">Sistemas Operativos Avanzados</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC300</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia" id="CC320">
+			<div class="clave">CC320</div>
+			<div class="nombre">Taller de Sistemas Operativos Avanzados</div>
+			<div class="creditos">4</div>
+			<div class="pre"></div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia optativa" id="CC400">
+			<div class="clave">CC400</div>
+			<div class="nombre">Sistemas Expertos</div>
+			<div class="creditos">9</div>
+			<div class="pre">CC307</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia optativa" id="CC410">
+			<div class="clave">CC410</div>
+			<div class="nombre">Redes Neuronales Artificiales</div>
+			<div class="creditos">11</div>
+			<div class="pre">CC307</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+		<div class="materia optativa" id="CC415">
+			<div class="clave">CC415</div>
+			<div class="nombre">Inteligencia Artificial</div>
+			<div class="creditos">6</div>
+			<div class="pre">CC308</div>
+			<textarea name="" cols="2" rows="1" class=""></textarea>
+		</div>
+	</div>
+	</section>
+	<footer>
+		<input type="button" value="Actualizar" class="boton">
+	</footer>
+	<script type="text/javascript">
+		var creditos;
+		(function(){
+			var i,j;
+			creditos=0;
+			for(i=0, j=document.getElementsByClassName("materia").length;i<j;i++){
+				var materia=document.getElementsByClassName("materia")[i];
+				var clave=materia.getElementsByClassName("clave")[0].innerHTML;
+				var textarea=materia.getElementsByTagName("textarea")[0];
+				if(textarea.addEventListener)
+					textarea.addEventListener("change",actualizar,false);
+				else if(textarea.attachEvent)
+					textarea.attachEvent("onchange",actualizar);
+					
+				var pre=materia.getElementsByClassName("pre")[0].innerHTML;
+				var storage=localStorage.getItem(clave);
+				if(storage!=null){
+					materia.getElementsByTagName("textarea")[0].placeholder="0";
+					if(storage!=0||storage!="0"){
+						textarea.value=storage;
+						if(materia.classList)
+							materia.classList.add("pasada");
+						else if(materia.setAttribute("class",materia.getAttribute("class")+" pasada"))
+							materia.setAttribute("class",materia.getAttribute("class"+" pasada"));
+						else
+							materia.className+=" pasada";
+						creditos+=parseInt(materia.getElementsByClassName("creditos")[0].innerHTML);
+					}
+				}
+				else{
+					if(isNaN(parseInt(textarea.value))||parseInt(textarea.value)==0||textarea.value=="")
+						localStorage.setItem(clave,0)
+					else
+						localStorage.setItem(clave,parseInt(textarea.value))
+					textarea.value=localStorage.getItem(clave);
+				}
+			}
+			//máximo 442 créditos
+			document.getElementById("creditos").innerHTML=creditos+" ("+((creditos*100/4.22)<<0)/100+"%)";
+
+			for(i=0, j=document.getElementsByClassName("materia").length;i<j;i++){
+				var materia=document.getElementsByClassName("materia")[i];
+				var clave=materia.getElementsByClassName("clave")[0].innerHTML;
+				var textarea=materia.getElementsByTagName("textarea")[0];
+				var pre=materia.getElementsByClassName("pre")[0].innerHTML;
+				if(pre!=""){
+					var k,l,posible;
+					posible=1;
+					if(pre.match(new RegExp('[|][|]')))
+						pre=pre.split("||");
+					else
+						pre=pre.split(",");
+					for(k=0,l=pre.length;k<l;k++){
+						if(pre[k].match(new RegExp('^[A-Z]'))){
+							//!document.getElementById(pre[k]).classList.contains("pasada")
+							if(!document.getElementById(pre[k]).className.match(new RegExp("pasada"))||!document.getElementById(pre[k]).getAttribute("class").match(new RegExp("pasada")))
+								posible=0;
+							//console.log(clave+" -> pre:"+document.getElementById(pre[k]).getElementsByClassName("clave")[0].innerHTML);
+						}else{
+							if(creditos<parseInt(pre[k]))
+								posible=0;
+							else
+								posible=1;
+						}
+					}
+					if(!posible){
+						if(materia.classList)
+							materia.classList.add("noPosible");
+						else if(materia.setAttribute("class",materia.getAttribute("class")+" noPosible"))
+							materia.setAttribute("class",materia.getAttribute("class")+" noPosible");
+						else
+							materia.className+=" noPosible";
+					}
+				}
+			}
+		})();
+		if(document.getElementsByClassName("boton")[0].addEventListener)
+			document.getElementsByClassName("boton")[0].addEventListener("click",actualizar,false);
+		else if(document.getElementsByClassName("boton")[0].attachEvent)
+			document.getElementsByClassName("boton")[0].attachEvent("onclick",actualizar);
+		function actualizar(){
+			creditos=0;
+			for(i=0, j=document.getElementsByClassName("materia").length;i<j;i++){
+				var materia=document.getElementsByClassName("materia")[i];
+				var clave=materia.getElementsByClassName("clave")[0].innerHTML;
+				var textarea=materia.getElementsByTagName("textarea")[0];
+				if(isNaN(parseInt(textarea.value)))
+					localStorage.setItem(clave,0);
+				else
+					localStorage.setItem(clave,parseInt(textarea.value));
+				var storage=localStorage.getItem(clave);
+				if(storage!=0||storage!="0"){
+					textarea.value=storage;
+					if(materia.classList)
+						materia.classList.add("pasada");
+					else if(materia.setAttribute("class",materia.getAttribute("class")+" pasada")){
+						if(!materia.getAttribute("class").match(new RegExp('pasada')))
+							materia.setAttribute("class",materia.getAttribute("class"+" pasada"));
+					}
+					else{
+						if(!materia.getAttribute("class").match(new RegExp('pasada')))
+							materia.className+=" pasada";
+					}
+					creditos+=parseInt(materia.getElementsByClassName("creditos")[0].innerHTML);
+				}
+				else{
+					if(materia.classList)
+						materia.classList.remove("pasada");
+					else if(materia.setAttribute("class",materia.getAttribute("class").replace("pasada","")))
+						materia.setAttribute("class",materia.getAttribute("class").replace("pasada",""));
+					else
+						materia.className.replace("pasada","");
+				}
+			}
+			document.getElementById("creditos").innerHTML=creditos+" ("+((creditos*100/4.22)<<0)/100+"%)";
+			for(i=0, j=document.getElementsByClassName("materia").length;i<j;i++){
+				var materia=document.getElementsByClassName("materia")[i];
+				var clave=materia.getElementsByClassName("clave")[0].innerHTML;
+				var textarea=materia.getElementsByTagName("textarea")[0];
+				var pre=materia.getElementsByClassName("pre")[0].innerHTML;
+				if(pre!=""){
+					var k,l,posible;
+					posible=1;
+					if(pre.match(new RegExp('[|][|]')))
+						pre=pre.split("||");
+					else
+						pre=pre.split(",");
+					for(k=0,l=pre.length;k<l;k++){
+						if(pre[k].match(new RegExp('^[A-Z]'))){
+							//||!document.getElementById(pre[k]).classList.contains("pasada")
+							if(!document.getElementById(pre[k]).className.match(new RegExp("pasada"))||!document.getElementById(pre[k]).getAttribute("class").match(new RegExp("pasada")))
+								posible=0;
+							//console.log(clave+" -> pre:"+document.getElementById(pre[k]).getElementsByClassName("clave")[0].innerHTML);
+						}else{
+							if(creditos<parseInt(pre[k]))
+								posible=0;
+							else
+								posible=1;
+						}
+					}
+					if(!posible){
+						if(materia.classList)
+							materia.classList.add("noPosible");
+						else if(materia.setAttribute("class",materia.getAttribute("class")+" noPosible")){
+							if(!materia.getAttribute("class").match(new RegExp('noPosible')))
+								materia.setAttribute("class",materia.getAttribute("class")+" noPosible");
+						}
+						else{
+							if(!materia.getAttribute("class").match(new RegExp('noPosible')))
+								materia.className+=" noPosible";
+						}
+					}
+					else{
+						if(materia.classList)
+							materia.classList.remove("noPosible");
+						else if(materia.setAttribute("class",materia.getAttribute("class").replace("noPosible","")))
+							materia.setAttribute("class",materia.getAttribute("class").replace("noPosible",""));
+						else
+							materia.className.replace("noPosible","");
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>
