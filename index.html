@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="css/main.css">
+	<title>CUCEI Ing. en Computación</title>
+</head>
+<body>
+	<!-- <div id="svg">
+		<object data="svg/Logocucei.svg" type="image/svg+xml" width="100%"></object>
+	</div> -->
+	<header>
+		<h1>Plan de estudios</h1> 
+		<div class="creditosContenedor">Créditos: 
+			<div id="creditos"></div>
+		</div>
+		<div class="promedioContenedor">Promedio: 
+			<div id="promedio"></div>
+		</div>
+	</header>
+	<nav>
+		
+	</nav>
+	<section>
+	<!-- div#smestre$.semestre*8>(div.materia>div.clave+div.nombre+div.creditos+div.pre#+textarea.cursada[placeholder="semestre en el cual fue cursada" cols=2 rows=1])*7<div></div> -->
+		<div id="smestre1" class="semestre">
+			1°<br>
+			<div class="materia" id="FS101">
+				<div class="clave">FS101</div>
+				<div class="nombre">Int. a la Física</div>
+				<div class="creditos">11</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="MT101">
+				<div class="clave">MT101</div>
+				<div class="nombre">Precálculo</div>
+				<div class="creditos">9</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="MT106">
+				<div class="clave">MT106</div>
+				<div class="nombre">Lógica y Conjuntos</div>
+				<div class="creditos">9</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="ID102">
+				<div class="clave">ID102</div>
+				<div class="nombre">Taller de Comunicación Oral y Escrita</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC100">
+				<div class="clave">CC100</div>
+				<div class="nombre">Introducción a la Computación</div>
+				<div class="creditos">8</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC101">
+				<div class="clave">CC101</div>
+				<div class="nombre">Taller de Introducción a la Computación</div>
+				<div class="creditos">3</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+		</div>
+		<div id="smestre2" class="semestre">
+			2°<br>
+			<div class="materia" id="FS102">
+				<div class="clave">FS102</div>
+				<div class="nombre">Mecánica</div>
+				<div class="creditos">12</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="MT110">
+				<div class="clave">MT110</div>
+				<div class="nombre">Cálculo Diferencial e Integral</div>
+				<div class="creditos">9</div>
+				<div class="pre">MT101</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="MT120">
+				<div class="clave">MT120</div>
+				<div class="nombre">Algebra Lineal I</div>
+				<div class="creditos">9</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="MT260">
+				<div class="clave">MT260</div>
+				<div class="nombre">Matemáticas Discretas</div>
+				<div class="creditos">8</div>
+				<div class="pre">MT101,MT106</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="ID103">
+				<div class="clave">ID103</div>
+				<div class="nombre">Taler de Redacción</div>
+				<div class="creditos">4</div>
+				<div class="pre">ID102</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC102">
+				<div class="clave">CC102</div>
+				<div class="nombre">Introducción a la Programación</div>
+				<div class="creditos">8</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC103">
+				<div class="clave">CC103</div>
+				<div class="nombre">Taller de Programación Estructurada</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+		</div>
+		<div id="smestre3" class="semestre">
+			3°<br>
+			<div class="materia" id="FS105">
+				<div class="clave">FS105</div>
+				<div class="nombre">Electromagnetismo</div>
+				<div class="creditos">9</div>
+				<div class="pre">FS102,MT110</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="MT140">
+				<div class="clave">MT140</div>
+				<div class="nombre">Ecuaciones Diferenciales Ordinarias I</div>
+				<div class="creditos">8</div>
+				<div class="pre">MT110</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="MT130">
+				<div class="clave">MT130</div>
+				<div class="nombre">Análisis Numérico I</div>
+				<div class="creditos">9</div>
+				<div class="pre">MT110,MT120</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="MT150">
+				<div class="clave">MT150</div>
+				<div class="nombre">Elementos de Probabilidad y Estadística</div>
+				<div class="creditos">8</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC202">
+				<div class="clave">CC202</div>
+				<div class="nombre">Estructura de Datos</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC102</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC203">
+				<div class="clave">CC203</div>
+				<div class="nombre">Taller de Estructura de Datos</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC200">
+				<div class="clave">CC200</div>
+				<div class="nombre">Programación Orientada a Objetos</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC102</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC201">
+				<div class="clave">CC201</div>
+				<div class="nombre">Taller de Programación Orientada a Objetos</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+		</div>
+		<div id="smestre4" class="semestre">
+			4°<br>
+			<div class="materia" id="ID204">
+				<div class="clave">ID204</div>
+				<div class="nombre">Administración</div>
+				<div class="creditos">6</div>
+				<div class="pre">90</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="ET209">
+				<div class="clave">ET209</div>
+				<div class="nombre">Sistemas Digitales I</div>
+				<div class="creditos">11</div>
+				<div class="pre">MT106||150</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC211">
+				<div class="clave">CC211</div>
+				<div class="nombre">Teleinformática</div>
+				<div class="creditos">11</div>
+				<div class="pre">100</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC209">
+				<div class="clave">CC209</div>
+				<div class="nombre">Teoría de la Computación</div>
+				<div class="creditos">11</div>
+				<div class="pre">MT260</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC204">
+				<div class="clave">CC204</div>
+				<div class="nombre">Estructura de Archivos</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC202</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC205">
+				<div class="clave">CC205</div>
+				<div class="nombre">Taller de Estructura de Archivos</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC208">
+				<div class="clave">CC208</div>
+				<div class="nombre">Lenguajes de Programación Comparados</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC200</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+		</div>
+		<div id="smestre5" class="semestre">
+			5°<br>
+			<div class="materia" id="CC210">
+				<div class="clave">CC210</div>
+				<div class="nombre">Arquitectura de Computadoras</div>
+				<div class="creditos">11</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC212">
+				<div class="clave">CC212</div>
+				<div class="nombre">Redes de Computadoras</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC211</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC213">
+				<div class="clave">CC213</div>
+				<div class="nombre">Taller de Redes de Computadoras</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC311">
+				<div class="clave">CC311</div>
+				<div class="nombre">Gráficas por Computadora</div>
+				<div class="creditos">11</div>
+				<div class="pre">MT130</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC312">
+				<div class="clave">CC312</div>
+				<div class="nombre">Taller de Gráficas por Computadora</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC206">
+				<div class="clave">CC206</div>
+				<div class="nombre">Programación de Sistemas</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC204</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC207">
+				<div class="clave">CC207</div>
+				<div class="nombre">Taller de Programación de Sistemas</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC302">
+				<div class="clave">CC302</div>
+				<div class="nombre">Bases de Datos</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC204</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC303">
+				<div class="clave">CC303</div>
+				<div class="nombre">Taller de Bases de Datos</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC204</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC307">
+				<div class="clave">CC307</div>
+				<div class="nombre">Programación Lógica y Funcional</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC208</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC308">
+				<div class="clave">CC308</div>
+				<div class="nombre">Taller de Programación Lógica y Funcional</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="ID203">
+				<div class="clave">ID203</div>
+				<div class="nombre">Análisis Contable</div>
+				<div class="creditos">6</div>
+				<div class="pre">80</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia optativa" id="CC401">
+				<div class="clave">CC401</div>
+				<div class="nombre">Programación de Sistemas Multimedia</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC200</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia optativa" id="CC411">
+				<div class="clave">CC411</div>
+				<div class="nombre">Computación Tolerante a Fallas</div>
+				<div class="creditos">11</div>
+				<div class="pre">250</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC300">
+				<div class="clave">CC300</div>
+				<div class="nombre">Sistemas Operativos</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC208</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC301">
+				<div class="clave">CC301</div>
+				<div class="nombre">Taller de Sistemas Operativos</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC413">
+				<div class="clave">CC413</div>
+				<div class="nombre">Programación Concurrente y Distribuida</div>
+				<div class="creditos">11</div>
+				<div class="pre">250</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC414">
+				<div class="clave">CC414</div>
+				<div class="nombre">Taller de Programación Concurrente y Distribuida</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+		</div>
+		<div id="smestre6" class="semestre">
+			6°<br>
+			<div class="materia optativa" id="CC409">
+				<div class="clave">CC409</div>
+				<div class="nombre">Arquitectura de Computadoras Avanzada</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC210</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC407">
+				<div class="clave">CC407</div>
+				<div class="nombre">Proyecto Terminal</div>
+				<div class="creditos">4</div>
+				<div class="pre">350</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC316">
+				<div class="clave">CC316</div>
+				<div class="nombre">Análisis y Diseño de Algoritmos</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC209</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC317">
+				<div class="clave">CC317</div>
+				<div class="nombre">Compiladores</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC209</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC318">
+				<div class="clave">CC318</div>
+				<div class="nombre">Taller de Compiladores</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC304">
+				<div class="clave">CC304</div>
+				<div class="nombre">Ingeniería de Software I</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC302</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC319">
+				<div class="clave">CC319</div>
+				<div class="nombre">Sistemas Operativos Avanzados</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC300</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia" id="CC320">
+				<div class="clave">CC320</div>
+				<div class="nombre">Taller de Sistemas Operativos Avanzados</div>
+				<div class="creditos">4</div>
+				<div class="pre"></div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia optativa" id="CC400">
+				<div class="clave">CC400</div>
+				<div class="nombre">Sistemas Expertos</div>
+				<div class="creditos">9</div>
+				<div class="pre">CC307</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia optativa" id="CC410">
+				<div class="clave">CC410</div>
+				<div class="nombre">Redes Neuronales Artificiales</div>
+				<div class="creditos">11</div>
+				<div class="pre">CC307</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+			<div class="materia optativa" id="CC415">
+				<div class="clave">CC415</div>
+				<div class="nombre">Inteligencia Artificial</div>
+				<div class="creditos">6</div>
+				<div class="pre">CC308</div>
+				<textarea name="" cols="2" rows="1" class=""></textarea>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<input type="button" value="Actualizar" class="boton">
+	</footer>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
